@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tableau{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .affi{
+            border-left: 4px solid #2566;
+        padding: 20px 20px;
+      }
+
+      table{
+        justify-items: center;
+        border-collapse: collapse;
+        border: 3px solid #2566;
+        width: 250px;
+        height: auto;
+        
+      }
+
+      tr{
+        border: 1px solid black;
+        text-align: center;
+      }
+
+      td{
+        border: 1px solid black;
+        padding: 0;
+      }
+
+      button{
+        padding: 20px 25px;
+        border: none;
+        background-color: inherit;
+      }
+
+      tr td:hover{
+        background-color: aqua;
+      }
+
+      .red{
+        background-color: red;
+      }
+
+      .bleu{
+        background-color: #4d4aea;
+      }
+    </style>
+</head>
+<body>
+
+   
+
+    <div class="tableau">
+
+        <div class="affi">
+            <p id="affichage">0</p>
+        </div>
+
+        <table class="table">
+            <tr>
+            <td class="red"><button onclick="effacer">C</button></td>
+            <td><button onclick="ajouterValeur('()')">()</button></td>
+            <td><button onclick="ajouterValeur('%')">%</button></td>
+            <td><button onclick="ajouterValeur('/')">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="ajouterValeur('7')">7</button></td>
+            <td><button onclick="ajouterValeur('8')">8</button></td>
+            <td><button onclick="ajouterValeur('9')">9</button></td>
+            <td><button onclick="ajouterValeur('*')">*</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="ajouterValeur('4')">4</button></td>
+            <td><button onclick="ajouterValeur('5')">5</button></td>
+            <td><button onclick="ajouterValeur('6')">6</button></td>
+            <td><button onclick="ajouterValeur('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="ajouterValeur('1')">1</button></td>
+            <td><button onclick="ajouterValeur('2')">2</button></td>
+            <td><button onclick="ajouterValeur('3')">3</button></td>
+            <td><button onclick="ajouterValeur('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="ajouterValeur('.')">,</button></td>
+            <td><button onclick="ajouterValeur('0')">0</button></td>
+            <td class="red"><button onclick="effacer()">Del</button></td>
+            <td class="bleu"><button onclick="calcule()">=</button></td>
+        </tr>
+        </table>
+
+    </div>
+
+    <script>
+        var operation="";
+        function ajouterValeur(valeur){
+            if(operation ===0 && valeur!=="."){
+                 operation="";
+            }
+
+            operation+=valeur;
+            document.getElementById("affichage").innerHTML=operation;
+        }
+
+        function calcule(){
+            try{
+                var resultat=eval(operation)
+
+                document.getElementById("affichage").innerHTML=resultat
+                operation=resultat.toString();
+            }
+            catch (e){
+                document.getElementById("affichage").innerHTML="Erreur";
+                operation="";
+            }
+        }
+        function effacer(){
+            operation="";
+            document.getElementById("affichage").innerHTML="0";
+        }
+
+    </script>
+    
+    <!--
+    <div>
+        <fieldset><h1>Calculatrice</h1>
+            <input type="number" id="first" name="first" required placeholder="Chiffre">
+            <select name="choice" id="choice">
+                <option value="*">Multiplier</option>
+                <option value="/">Diviser</option>
+                <option value="+">ajouterValeur</option>
+                <option value="-">Soustraire</option>
+            </select>
+            <input type="number" id="second" placeholder="Chiffre" name="second" required>
+            <button name="btn" onclick="calculate();">Resultat</button>
+            <span id="result"></span>
+        </fieldset>
+
+    </div>
+    <script>
+        function calculate(){
+        var one=document.getElementById("first").value;
+        var two=document.getElementById("second").value;
+        var operations=document.getElementById("choice").value;
+
+        var resultat=eval(one+operations+two);
+        
+        const solution=document.getElementById("result");
+        solution.innerHTML= "= "+resultat;
+        console.log();
+        }
+       
+
+    </script>
+    -->
+</body>
+</html>

@@ -1,3 +1,26 @@
+/* START Police d'ecriture */
+@font-face{
+    font-family: "Montserrat";
+    src: url('fonts/Montserrat-Bold.otf') format(opentype);
+    font-weight: 700;
+    font-display:swap; 
+}
+@font-face{
+    font-family: "Montserrat";
+    src: url('fonts/Montserrat-Medium.otf')format(opentype);
+    font-weight: 300;
+    font-display:swap; 
+}
+@font-face{
+    font-family: "Montserrat";
+    src: url('fonts/Montserrat-Regular.otf')format(opentype);
+    font-weight: 400;
+    font-display:swap; 
+}
+/* END Police d'ecriture */
+
+
+
 *{
     box-sizing: border-box;
 }
@@ -28,12 +51,14 @@ body{
 .topbar nav a{
     margin: 0 40px;
     text-decoration: none;
-    color: #9F9F9F;
+    color: #000;
+    opacity: 0.5;
     font-size: 20px;
 }
 
 .topbar nav a:hover, .topbar nav a.active{
-    color: #000;
+    opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .topbar-social{
@@ -43,10 +68,12 @@ body{
 .topbar-social a{
     margin: 0 10px;
     opacity: 0.5;
+    
 }
 
 .topbar-social a:hover{
     opacity: 1;
+    transition: opacity 0.5s;
 }
 
 .img-bg{
@@ -83,11 +110,28 @@ article{
 article:first-child{
     margin-top: 20px;
 }
+
 .articleimg{
     width: 308px;
     height: 203px;
     float: left;
     margin: 0px 20px 0px 0px;
+    transform: scale(0.9);
+    animation: slidebot 1s reverse;
+}
+
+.articleimg:hover{
+    transform: scale(1);
+    transition: transform 1s;
+}
+
+@keyframes slidebot{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-200px);
+    }
 }
 
 .date{
